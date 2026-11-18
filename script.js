@@ -81,6 +81,12 @@ if (intro) {
   setTimeout(() => !v.currentTime && done(), 6000); // never strand the visitor on a stalled video
 }
 
+// desktop hero video: only fetched on wide screens, skipped for reduced motion / data saver
+const hv = document.querySelector('.hero-video');
+if (hv && matchMedia('(min-width: 901px)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches && !navigator.connection?.saveData) {
+  hv.src = hv.dataset.src; hv.play().catch(() => {});
+}
+
 // hero project slider
 const slides = document.querySelectorAll('.slide');
 if (slides.length > 1) {

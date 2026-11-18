@@ -79,8 +79,10 @@
   <div class="intro-ui"><button class="intro-sound" type="button">Sound on</button><button class="intro-skip" type="button">Skip intro <span aria-hidden="true">→</span></button></div>
   <div class="intro-bar"><i></i></div>
 </div>
-<script>if(sessionStorage.kspIntro||matchMedia('(prefers-reduced-motion: reduce)').matches||(navigator.connection&&navigator.connection.saveData))document.getElementById('intro').remove();else document.documentElement.classList.add('intro-lock')</script>
-<section class="hero"><div class="wrap">
+<script>if(innerWidth>900||sessionStorage.kspIntro||matchMedia('(prefers-reduced-motion: reduce)').matches||(navigator.connection&&navigator.connection.saveData))document.getElementById('intro').remove();else document.documentElement.classList.add('intro-lock')</script>
+<section class="hero has-vid">
+<video class="hero-video" muted loop playsinline preload="none" poster="assets/video/hero-poster.jpg" data-src="assets/video/intro-1280.mp4" aria-hidden="true"></video>
+<div class="wrap">
   <div class="rv">
     <span class="eyebrow">Real estate developers · Kolkata · Since 2011</span>
     <h1 class="h1">Thoughtfully designed spaces, <em>delivered with trust.</em></h1>

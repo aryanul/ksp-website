@@ -583,3 +583,30 @@ html.intro-lock,html.intro-lock body{overflow:hidden}
 .intro-bar{position:absolute;z-index:2;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.18)}
 .intro-bar i{display:block;height:100%;background:#d9b98a;transform-origin:left;transform:scaleX(0)}
 @media (orientation:portrait){.intro video{object-fit:contain}}
+
+/* desktop: video behind the hero (phones get the separate intro instead) */
+.hero-video{display:none}
+@media (min-width:901px){
+  .hero.has-vid{background:#111;min-height:min(88vh,800px);display:flex;align-items:center}
+  .hero.has-vid::before{left:0;bottom:0;width:auto;inset:0;aspect-ratio:auto;opacity:1;z-index:1;background:linear-gradient(90deg,rgba(17,19,22,.9) 0%,rgba(17,19,22,.62) 45%,rgba(17,19,22,.15) 100%),linear-gradient(0deg,rgba(17,19,22,.5),transparent 40%)}
+  .hero.has-vid::after{display:none}
+  .hero.has-vid .hero-video{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero.has-vid .wrap{display:block;width:100%;z-index:2}
+  .hero.has-vid .wrap>.rv{max-width:680px}
+  .hero.has-vid .slider{display:none}
+  .hero.has-vid .eyebrow{color:#d9b98a}
+  .hero.has-vid .eyebrow::before{background:#d9b98a}
+  .hero.has-vid .h1{color:#fff}
+  .hero.has-vid .h1 em{color:#d9b98a}
+  .hero.has-vid .lead{color:#e3e5e8}
+  .hero.has-vid .actions{align-items:center}
+  .hero.has-vid .btn.outline{color:#fff;border-color:#ffffff80}
+  .hero.has-vid .btn.outline:hover{background:#fff;color:var(--ink)}
+  .hero.has-vid .play.dark{color:#fff}
+  .hero.has-vid .play.dark i{background:#fff}
+  .hero.has-vid .play.dark i::before{border-left-color:var(--bronze)}
+  .hero.has-vid .play.dark i::after{border-color:#ffffff90}
+  .hero.has-vid .trust{border-color:#ffffff30}
+  .hero.has-vid .trust div{color:#c9cdd2}
+  .hero.has-vid .trust b{color:#fff}
+}
