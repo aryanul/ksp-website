@@ -6,21 +6,6 @@ const burger = document.querySelector('.burger');
 burger.onclick = () => burger.setAttribute('aria-expanded', hd.classList.toggle('open'));
 document.querySelectorAll('.nav a').forEach(a => a.addEventListener('click', () => hd.classList.remove('open')));
 
-// hero slider
-const slides = document.querySelectorAll('.slide');
-if (slides.length > 1) {
-  const dots = document.querySelectorAll('.dots button');
-  let cur = 0, timer;
-  const show = n => {
-    slides[cur].classList.remove('on'); dots[cur].classList.remove('on');
-    cur = (n + slides.length) % slides.length;
-    slides[cur].classList.add('on'); dots[cur].classList.add('on');
-  };
-  const play = () => { clearInterval(timer); timer = setInterval(() => show(cur + 1), 5500); };
-  dots.forEach((d, i) => d.onclick = () => { show(i); play(); });
-  play();
-}
-
 // project filter tabs
 document.querySelectorAll('.tabs').forEach(tabs => tabs.querySelectorAll('button').forEach(b => b.onclick = () => {
   tabs.querySelector('.on').classList.remove('on'); b.classList.add('on');
@@ -75,3 +60,18 @@ document.querySelectorAll('form.enquiry').forEach(form => form.onsubmit = e => {
 });
 
 document.querySelectorAll('.yr-now').forEach(el => el.textContent = new Date().getFullYear());
+
+// hero video: keep the poster only when the visitor saves data or prefers less motion
+const hv = document.querySelector('.hero-video');
+if (hv && (matchMedia('(prefers-reduced-motion: reduce)').matches || navigator.connection?.saveData)) {
+  hv.removeAttribute('autoplay'); hv.querySelectorAll('source').forEach(s => s.remove()); hv.load();
+}
+
+// film modal (full version with sound)
+const film = document.querySelector('dialog.film'), fv = film?.querySelector('video');
+document.querySelectorAll('[data-film]').forEach(b => b.onclick = () => { film.showModal(); fv.currentTime = 0; fv.play(); });
+if (film) {
+  film.querySelector('.x').onclick = () => film.close();
+  film.onclick = e => e.target === film && film.close();
+  film.addEventListener('close', () => fv.pause());
+}
