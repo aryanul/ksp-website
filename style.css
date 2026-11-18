@@ -424,3 +424,137 @@ dialog.film::backdrop{background:#0b0c0ef2}
 dialog.film video{display:block;width:100%;aspect-ratio:16/9;border-radius:10px;background:#000}
 dialog.film .x{position:absolute;right:0;top:-48px;width:40px;height:40px;border-radius:50%;border:1px solid #ffffff55;background:none;color:#fff;font-size:1.3rem;cursor:pointer}
 @media (max-width:640px){.hero.vid{min-height:auto}.hero.vid::before{background:rgba(17,19,22,.68)}}
+
+/* ===== mobile pass ===== */
+.hd-call,.mbar{display:none}
+@media (max-width:860px){
+  .hd .wrap{min-height:68px}
+  .nav{top:68px}
+  .subnav{top:68px}
+  .logo img{height:42px}
+  .hd-cta{gap:.6rem}
+  .hd-call{display:grid;place-items:center;width:44px;height:44px;border-radius:var(--r);background:var(--bronze-l);color:var(--bronze)}
+  .hd-call svg.i{width:20px;height:20px}
+  .wa{display:none}
+  .mbar{display:grid;grid-template-columns:1fr 1fr 1.3fr;position:fixed;left:0;right:0;bottom:0;z-index:95;background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 24px -12px rgba(0,0,0,.25);padding-bottom:env(safe-area-inset-bottom)}
+  .mbar a{display:flex;align-items:center;justify-content:center;gap:.45rem;min-height:56px;font:600 .9rem var(--sans);color:var(--ink)}
+  .mbar a+a{border-left:1px solid var(--line)}
+  .mbar svg{width:20px;height:20px}
+  .mbar svg.i{color:var(--bronze)}
+  .mbar a:nth-child(2) svg{fill:#25d366}
+  .mbar .pri{background:var(--bronze);color:#fff;border-left:0}
+  .mbar .pri svg.i{color:#fff}
+  body{padding-bottom:calc(56px + env(safe-area-inset-bottom))}
+  .nav{bottom:56px}
+}
+@media (max-width:640px){
+  body{font-size:.97rem}
+  .wrap{padding:0 1.15rem}
+  .sec{padding:3.25rem 0}
+  .sec-head{margin-bottom:1.6rem}
+  .sec-head .h2{margin:.7rem 0 .5rem}
+  .h1{font-size:2.15rem;line-height:1.12}
+  .h2{font-size:1.75rem}
+  .lead{font-size:1rem}
+  .eyebrow{font-size:.68rem;letter-spacing:.12em}
+  .eyebrow::before{width:20px}
+  .btn{padding:.9rem 1.2rem}
+
+  /* hero */
+  .hero.vid{padding:3rem 0 2.2rem;min-height:min(calc(100svh - 124px),700px)}
+  .hero.vid .h1{margin:.9rem 0 1rem}
+  .hero.vid .lead{margin-bottom:1.6rem}
+  .hero.vid .actions{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+  .hero.vid .actions .btn{width:100%;padding:.9rem .6rem;font-size:.88rem}
+  .hero.vid .play{grid-column:1/-1;justify-content:center;padding:.3rem 0}
+  .play i{width:40px;height:40px}
+  .play i::before{left:16px;top:12px;border-left-width:12px;border-top-width:8px;border-bottom-width:8px}
+  .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:1.8rem;padding-top:1.2rem}
+  .trust b{font-size:1.35rem}
+  .trust div{font-size:.75rem}
+
+  /* quick enquiry: own block, no overlap with the video */
+  .qbar{margin-top:0;background:var(--soft);padding:1.6rem 0}
+  .qbar form{padding:1.2rem;gap:.7rem;box-shadow:none}
+  .qbar .t{font-size:1.2rem}
+
+  /* about collage */
+  .about-img{margin:0}
+  .about-img .main{aspect-ratio:4/3}
+  .about-img .inset{display:none}
+  .about-img .since{left:.8rem;top:.8rem;padding:.7rem .9rem}
+  .about-img .since b{font-size:1.5rem}
+  .values{gap:.45rem;margin:1.2rem 0 1.4rem}
+  .values span{font-size:.8rem;padding:.4rem .7rem}
+
+  /* stats */
+  .stats .s{padding:1.6rem .6rem}
+  .stats b{font-size:2rem}
+  .stats span{font-size:.8rem;margin-top:.4rem}
+
+  /* compact icon rows instead of tall cards */
+  .feat,.vcards{gap:.7rem}
+  .feat>div,.vcards>div{display:grid;grid-template-columns:44px 1fr;column-gap:1rem;padding:1.1rem 1.1rem;align-items:start}
+  .feat .ic,.vcards .ic{width:44px;height:44px;margin:0;grid-row:span 2}
+  .feat .ic svg.i,.vcards .ic svg.i{width:22px;height:22px}
+  .feat h3,.vcards h3{margin:0 0 .2rem;font-size:1rem}
+  .feat p,.vcards p{font-size:.88rem;line-height:1.5}
+  .amen,.amen[style]{grid-template-columns:1fr 1fr!important;gap:.6rem}
+  .amen li{flex-direction:row;text-align:left;gap:.6rem;padding:.8rem .85rem;font-size:.85rem;line-height:1.3}
+  .amen svg.i{width:22px;height:22px}
+  .steps{gap:.6rem}
+  .steps li{display:grid;grid-template-columns:2.6rem 1fr;column-gap:.8rem;padding:1rem 1.1rem}
+  .steps li::before{grid-row:span 2;font-size:1.6rem;margin:0}
+  .steps h3{margin:0 0 .1rem}
+  .dist{gap:.5rem}
+  .dist li{padding:.75rem .9rem;font-size:.9rem}
+  .plate{padding:.6rem}
+  .plate img{height:auto;max-height:340px}
+
+  /* project cards */
+  .tabs{width:100%}
+  .tabs button{flex:1;padding:.6rem .4rem;font-size:.82rem}
+  .card .bd{padding:1.1rem 1.1rem 1.2rem}
+  .card h3{font-size:1.5rem}
+  .card dd{font-size:.86rem}
+  .card dl div+div{padding-left:.6rem}
+
+  /* finance / faq / cta */
+  .finance{padding:1.5rem}
+  .finance::after{display:none}
+  .finance .bank span{padding:.7rem 1rem;font-size:.88rem}
+  .faq summary{padding:1rem 1.1rem;font-size:.95rem}
+  .faq details p{padding:0 1.1rem 1.1rem}
+  .cta{padding:3.2rem 0}
+  .cta .actions{display:grid;grid-template-columns:1fr 1fr;width:100%;gap:.7rem}
+  .cta .actions .btn{padding:.9rem .5rem;font-size:.86rem}
+
+  /* inner pages */
+  .phero{padding:2.2rem 0}
+  .phero::before{opacity:.25}
+  .pd-hero{padding:1.2rem 0 2rem}
+  .pd-hero .wrap{gap:1.2rem}
+  .pd-hero .h1{margin:.6rem 0 .3rem}
+  .pd-hero .loc{margin-bottom:1rem;font-size:.92rem}
+  .specs div{padding:.75rem .9rem}
+  .specs dd{font-size:.92rem}
+  .pd-hero .wrap>div:last-child>div:last-child{display:grid!important;grid-template-columns:1fr 1fr}
+  .pd-hero .wrap>div:last-child>div:last-child .btn{padding:.9rem .5rem;font-size:.86rem}
+  .ctable th,.ctable td{padding:.8rem .7rem;white-space:nowrap}
+  .ctable td:first-child{font-size:1.1rem}
+  .ctable th:last-child,.ctable td:last-child{display:none}
+  .split.pd>div>div[style*="margin-top:4rem"]{margin-top:2.6rem!important}
+  .gallery{grid-auto-rows:130px;gap:.5rem}
+  .form{padding:1.2rem}
+  .cinfo .ci{padding:1rem}
+  .map{height:300px}
+  .timeline li{padding-top:0;padding-left:2.2rem}
+  .timeline li::before{top:.4rem}
+  .timeline .yr{font-size:1.6rem}
+
+  /* footer */
+  .ft .top{grid-template-columns:1fr 1fr;gap:1.8rem 1.2rem;padding:2.8rem 0 2rem}
+  .ft .top>div:first-child,.ft .top>div:last-child{grid-column:1/-1}
+  .ft .bot{padding:1.2rem 0}
+  .ft .bot p:last-child{font-size:.74rem}
+}
