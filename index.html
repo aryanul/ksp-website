@@ -70,19 +70,32 @@
   </div>
 </div></header>
 <main>
-<section class="hero vid">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-poster.jpg" aria-hidden="true">
-    <source src="assets/video/hero-960.mp4" type="video/mp4" media="(max-width: 900px)">
-    <source src="assets/video/hero-1280.mp4" type="video/mp4">
+<div class="intro" id="intro" role="dialog" aria-label="K S Promoters intro video">
+  <video autoplay muted playsinline preload="auto" poster="assets/video/hero-poster.jpg">
+    <source src="assets/video/intro-960.mp4" type="video/mp4" media="(max-width: 900px)">
+    <source src="assets/video/intro-1280.mp4" type="video/mp4">
   </video>
-  <div class="wrap"><div class="hero-copy rv">
+  <img class="intro-logo" src="assets/ksp-logo-white.png" alt="K S Promoters">
+  <div class="intro-ui"><button class="intro-sound" type="button">Sound on</button><button class="intro-skip" type="button">Skip intro <span aria-hidden="true">→</span></button></div>
+  <div class="intro-bar"><i></i></div>
+</div>
+<script>if(sessionStorage.kspIntro||matchMedia('(prefers-reduced-motion: reduce)').matches||(navigator.connection&&navigator.connection.saveData))document.getElementById('intro').remove();else document.documentElement.classList.add('intro-lock')</script>
+<section class="hero"><div class="wrap">
+  <div class="rv">
     <span class="eyebrow">Real estate developers · Kolkata · Since 2011</span>
     <h1 class="h1">Thoughtfully designed spaces, <em>delivered with trust.</em></h1>
     <p class="lead">K S Promoters Pvt. Ltd. develops quality residential projects across South Kolkata — built on thoughtful planning, superior craftsmanship and enduring value.</p>
-    <div class="actions"><a class="btn" href="projects.html">Explore projects <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn ghost-w" href="contact.html" data-enquire>Book a site visit</a><button class="play" type="button" data-film><i></i>Watch our story</button></div>
+    <div class="actions"><a class="btn" href="projects.html">Explore projects <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn outline" href="contact.html" data-enquire>Book a site visit</a><button class="play dark" type="button" data-film><i></i>Watch our story</button></div>
     <div class="trust"><div><b>2011</b>Established</div><div><b>2</b>Residential projects</div><div><b>HDFC</b>Bank-approved</div></div>
-  </div></div>
-</section>
+  </div>
+  <div class="slider rv d1">
+    <div class="dots"><button class="on" aria-label="Balaji"></button><button aria-label="Shree Ganesh"></button></div>
+    <div class="slide on"><img src="assets/balaji-hero.jpg" alt="Balaji residential project, Purbachal Road" fetchpriority="high"><span class="badge top">Ongoing · RERA registered</span>
+      <div class="cap"><div><small>Balaji · Purbachal Road</small><b>2 &amp; 3 BHK Apartments</b><span>838 – 1056 sq.ft.</span></div><a class="btn sm" href="balaji.html">View project</a></div></div>
+    <div class="slide"><img src="assets/sg-render.jpg" alt="Shree Ganesh, Kalikapur Road" style="object-position:50% 30%"><span class="badge top done">Completed · April 2015</span>
+      <div class="cap"><div><small>Shree Ganesh · Kalikapur Road</small><b>South-facing 3 BHK Homes</b><span>1297 sq.ft. · G+3</span></div><a class="btn sm outline" href="shree-ganesh.html">View project</a></div></div>
+  </div>
+</div></section>
 
 <div class="qbar"><div class="wrap">
   <form class="enquiry rv">

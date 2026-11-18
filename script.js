@@ -61,10 +61,39 @@ document.querySelectorAll('form.enquiry').forEach(form => form.onsubmit = e => {
 
 document.querySelectorAll('.yr-now').forEach(el => el.textContent = new Date().getFullYear());
 
-// hero video: keep the poster only when the visitor saves data or prefers less motion
-const hv = document.querySelector('.hero-video');
-if (hv && (matchMedia('(prefers-reduced-motion: reduce)').matches || navigator.connection?.saveData)) {
-  hv.removeAttribute('autoplay'); hv.querySelectorAll('source').forEach(s => s.remove()); hv.load();
+// intro video (home): plays once per session, then fades into the site
+const intro = document.getElementById('intro');
+if (intro) {
+  const v = intro.querySelector('video'), bar = intro.querySelector('.intro-bar i'), snd = intro.querySelector('.intro-sound');
+  const done = () => {
+    if (intro.classList.contains('out')) return;
+    sessionStorage.kspIntro = 1;
+    intro.classList.add('out'); document.documentElement.classList.remove('intro-lock'); v.pause();
+    setTimeout(() => intro.remove(), 900);
+  };
+  v.addEventListener('ended', done);
+  v.addEventListener('error', done, true);
+  v.addEventListener('timeupdate', () => v.duration && (bar.style.transform = `scaleX(${v.currentTime / v.duration})`));
+  intro.querySelector('.intro-skip').onclick = done;
+  snd.onclick = () => { v.muted = !v.muted; snd.textContent = v.muted ? 'Sound on' : 'Sound off'; };
+  addEventListener('keydown', e => e.key === 'Escape' && done());
+  v.play().catch(done);
+  setTimeout(() => !v.currentTime && done(), 6000); // never strand the visitor on a stalled video
+}
+
+// hero project slider
+const slides = document.querySelectorAll('.slide');
+if (slides.length > 1) {
+  const dots = document.querySelectorAll('.dots button');
+  let cur = 0, timer;
+  const show = n => {
+    slides[cur].classList.remove('on'); dots[cur].classList.remove('on');
+    cur = (n + slides.length) % slides.length;
+    slides[cur].classList.add('on'); dots[cur].classList.add('on');
+  };
+  const play = () => { clearInterval(timer); timer = setInterval(() => show(cur + 1), 5500); };
+  dots.forEach((d, i) => d.onclick = () => { show(i); play(); });
+  play();
 }
 
 // film modal (full version with sound)
